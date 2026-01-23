@@ -20,6 +20,7 @@ Suivez ces étapes dans l'ordre pour que tout fonctionne correctement.
     git clone <votre-repo-url>
     cd starter-front-wcs
     ```
+    > 💡 **Utilisateurs Windows** : Si vous avez des erreurs de style (CRLF/LF), lancez `git config --global core.autocrlf true` pour que Git convertisse automatiquement les fins de ligne.
 
 2.  **Installer les dépendances** :
     ```bash
