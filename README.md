@@ -11,43 +11,49 @@ Ce projet est un template de démarrage moderne pour développer des application
 - **[Biome](https://biomejs.dev/)** : Toolchain web performante pour le linting et le formatage (remplace ESLint et Prettier).
 - **[Husky](https://typicode.github.io/husky/)** : Gestionnaire de hooks Git moderne pour automatiser les tâches (comme le linting avant commit).
 
-## 🛠 Installation
+## 🛠 Installation (À faire absolument !)
 
-1. Clonez ce dépôt (si ce n'est pas déjà fait) :
-   ```bash
-   git clone <votre-repo-url>
-   cd starter-front-wcs
-   ```
+Suivez ces étapes dans l'ordre pour que tout fonctionne correctement.
 
-2. Installez les dépendances :
-   ```bash
-   npm install
-   ```
-   *Note : L'installation initialisera automatiquement Husky via le script `prepare`.*
+1.  **Récupérer le projet** :
+    ```bash
+    git clone <votre-repo-url>
+    cd starter-front-wcs
+    ```
+
+2.  **Installer les dépendances** :
+    ```bash
+    npm install
+    ```
+    ⚠️ **Important** : Cette commande installe les librairies ET configure automatiquement Husky (les hooks git). Ne sautez pas cette étape.
+
+3.  **Vérifier que Husky est bien installé** :
+    Si jamais vous rencontrez des problèmes lors des commits (exemple : "command not found" ou hooks ignorés), lancez manuellement :
+    ```bash
+    npm run prepare
+    ```
 
 ## 💻 Développement
 
-Pour lancer le serveur de développement local :
+Une fois l'installation terminée, lancez le serveur local :
 
 ```bash
 npm run dev
 ```
 
-L'application sera accessible sur `http://localhost:5173` (ou un autre port si le 5173 est occupé).
+L'application sera accessible sur `http://localhost:5173`.
 
-## 📜 Scripts Disponibles
+## 📜 Commandes Utiles (Anti-Frustration)
 
-Voici la liste des commandes disponibles dans le fichier `package.json` :
+Voici les commandes exactes à utiliser en cas de pépin ou pour vérifier votre code.
 
-| Commande | Description |
-| :--- | :--- |
-| `npm run dev` | Lance le serveur de développement Vite. |
-| `npm run build` | Compile le projet pour la production (TypeScript + Vite). |
-| `npm run preview` | Permet de prévisualiser le build de production localement. |
-| `npm run lint` | Lance **Biome** pour vérifier la qualité du code et le formatage. |
-| `npm run lint:fix` | Lance **Biome** et corrige automatiquement les problèmes (lint & format). |
-| `npm run format` | Lance **Biome** pour formater tout le code du projet. |
-| `npm run prepare` | Script interne pour installer les hooks Husky. |
+| Besoin | Commande à lancer | Pourquoi ? |
+| :--- | :--- | :--- |
+| **Lancer le projet** | `npm run dev` | Pour coder et voir le résultat en direct. |
+| **Vérifier / Corriger le code** | `npm run lint:fix` | À lancer **avant** de commit si vous avez des erreurs. Cela corrige automatiquement le formatage et les petits soucis. |
+| **Juste vérifier le code** | `npm run lint` | Pour voir la liste des erreurs sans les corriger. |
+| **Réparer les hooks Git** | `npm run prepare` | Si vos commits ne sont pas vérifiés ou si Git se plaint, lancez ça une fois. |
+| **Compiler pour production** | `npm run build` | Vérifie que tout compile bien (TypeScript) et crée le dossier `dist`. à utiliser avant de déployer. |
 
 ## 🛡 Qualité du Code & Git Hooks
 
