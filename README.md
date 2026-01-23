@@ -76,6 +76,30 @@ Ce projet est configuré pour favoriser l'apprentissage. Si vous utilisez des ou
 - **Cursor** : Le fichier `.cursorrules` configure automatiquement l'éditeur pour adopter la même approche pédagogique.
 - **ChatGPT / Claude / Autres** : Veuillez copier le contenu du fichier `AI_INSTRUCTIONS.md` au début de votre conversation. Cela demandera à l'IA de vous guider pas à pas sans vous donner la solution finale directement.
 
+## 🎣 Workflow Git (Strict & Sécurisé)
+
+Ce projet utilise des **règles de protection**. Vous ne pouvez **pas** pousser directement sur `main` ou `dev`.
+
+### Comment travailler :
+
+1.  **Créer une branche** pour votre tâche :
+    ```bash
+    git checkout -b feature/ma-nouvelle-page
+    ```
+2.  **Coder** et faire vos commits (Husky vérifie votre code).
+3.  **Pousser** votre branche :
+    ```bash
+    git push -u origin feature/ma-nouvelle-page
+    ```
+4.  **Ouvrir une Pull Request (PR)** sur GitHub :
+    *   De `feature/ma-nouvelle-page` vers `dev` (ou `main` selon les consignes).
+5.  **Attendre la validation (CI)** :
+    *   GitHub va lancer les tests automatiques (`build-and-lint`).
+    *   Si c'est vert ✅ : Vous pouvez merger.
+    *   Si c'est rouge ❌ : Corrigez votre code, commitez et poussez à nouveau (la PR se met à jour toute seule).
+
+---
+
 ## 📂 Structure du Projet
 
 ```
