@@ -65,8 +65,49 @@ Nous utilisons **Biome** à la place de la combinaison classique ESLint + Pretti
 - Pour tout corriger automatiquement : `npm run lint:fix`
 
 ### Husky
-**Husky** est configuré pour intercepter vos commits.
-- **Pre-commit hook** : Avant chaque commit, la commande `npm run lint` est exécutée. Si le code ne respecte pas les standards (erreurs de linter), le commit sera bloqué. Cela garantit que seul du code propre est envoyé sur le dépôt.
+**Husky** est configuré pour intercepter vos commits avec deux vérifications :
+- **Pre-commit hook** : Vérifie que le diff ne dépasse pas 150 lignes, puis lance `npm run lint`. Si le code ne respecte pas les standards, le commit est bloqué.
+- **Commit-msg hook** : Vérifie que le message de commit suit le format **Conventional Commits** (voir ci-dessous).
+
+### Conventional Commits (Obligatoire)
+
+Chaque message de commit doit suivre le format **Conventional Commits** :
+
+```
+type(scope): description
+```
+
+| Élément | Obligatoire | Détail |
+| :--- | :--- | :--- |
+| **type** | Oui | `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `perf`, `ci`, `build`, `revert` |
+| **scope** | Non | Le module concerné entre parenthèses, ex: `(auth)`, `(cart)` |
+| **description** | Oui | Min 10 caractères, décrit ce que fait le commit |
+
+**Exemples valides :**
+```bash
+git commit -m "feat: ajout de la page de connexion"
+git commit -m "fix(cart): correction du calcul du total"
+git commit -m "docs: mise à jour du README avec les instructions"
+```
+
+**Exemples invalides :**
+```bash
+git commit -m "fix stuff"        # Pas de ':' après le type
+git commit -m "update"           # Type non reconnu
+git commit -m "feat: fix"        # Description trop courte (min 10 caractères)
+```
+
+### Limite de taille des commits (150 lignes max)
+
+Pour encourager des commits progressifs et logiques, chaque commit est limité à **150 lignes modifiées** (ajouts + suppressions).
+
+> Les fichiers `package-lock.json` et `*.svg` sont exclus du comptage.
+
+Si votre commit dépasse la limite :
+1. `git reset HEAD` — désindexer tous les fichiers
+2. `git add fichier1.tsx` — ajouter un fichier à la fois
+3. `git commit -m "feat: ..."` — commiter un petit bloc logique
+4. Répéter pour les fichiers restants
 
 ## 🤖 Utilisation de l'IA (ChatGPT, Claude, Copilot...)
 
